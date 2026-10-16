@@ -1,9 +1,7 @@
 package com.ramosdev.appointment.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -11,10 +9,12 @@ import java.util.UUID;
 
 
 @Entity
-@Table(name = "service_offering")
+@Table(name = "service_offerings")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
+@Builder
 public class ServiceOffering {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,5 +24,6 @@ public class ServiceOffering {
 
     private BigDecimal value;
 
-    private LocalDateTime createdAt;
+    @Builder.Default
+    private LocalDateTime createdAt = LocalDateTime.now();
 }
